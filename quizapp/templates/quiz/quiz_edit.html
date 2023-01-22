@@ -1,0 +1,13 @@
+{% extends 'quiz/base.html'%}
+{%block content%}
+{% if question_list %}
+<h1 class="quizhead">Edit Quiz</h1>
+    <ul class="quizlist">
+    {% for q in question_list %}
+        <li class="quizblock"><a href="{{q.id}}/">{{ q.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p class="errorstext">No quizzes are available.</p>
+{% endif %}
+{%endblock%}

@@ -1,0 +1,20 @@
+{% extends 'quiz/base.html'%}
+{%block content%} 
+<div> 
+   <form action="" method="POST">
+      <div class="lclass">
+        <h1 class="quizhead">Add Quiz</h1>
+        <div class="lform">
+              {% csrf_token %}
+                {{form.as_p}}
+                <br>
+           </div>
+           </div>
+                <div class="w3-container w3-center">
+             <input class="qformsubmit" type="submit" name="Submit">
+                </div>
+             </form>
+            </div>
+        </div>
+ </div>
+ {%endblock%}

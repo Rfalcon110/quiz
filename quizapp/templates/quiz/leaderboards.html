@@ -1,0 +1,9 @@
+{% extends 'quiz/base.html'%}
+{%block content%}
+    <h1 class="quizhead"></h1>
+    <ul class="quizlist">
+    {% for result in result_list %}
+        <li class="quizblock">{{result.user}}</a></li>
+    {% endfor %}
+    </ul>
+{%endblock%}

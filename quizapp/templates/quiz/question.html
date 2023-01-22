@@ -1,0 +1,74 @@
+
+{% extends 'quiz/base.html' %}
+{% block content %}
+<h1 class="quizhead">{{quizz}}</h1>
+<form method='post'>
+    {% csrf_token %}
+    {% for q  in question_scq%}
+    <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
+      <label class="queslabel" for="question">{{q.question_text}}</label>
+      <div>
+      <input id="{{q.choice_1}}" class="ansinput" type='radio'name={{q.question_text}} value={{q.choice_1}}>
+      <label class= "qchoice" for="{{q.choice_1}}">{{q.choice_1}}</label>
+      </div>
+      <div>
+      <input id="{{q.choice_2}}" class="ansinput" type='radio'name={{q.question_text}} value ={{q.choice_2}}>
+      <label class= "qchoice" for="{{q.choice_2}}">{{q.choice_2}}</label>
+      </div>
+       <input id="{{q.choice_3}}" class="ansinput" type='radio' name={{q.question_text}} value ={{q.choice_3}}>
+       <label class= "qchoice" for="{{q.choice_3}}">{{q.choice_3}}</label>
+      <div>
+      <input id="{{q.choice_4}}" class="ansinput" type='radio'name={{q.question_text}} value ={{q.choice_4}}>
+      <label class= "qchoice" for="{{q.choice_4}}">{{q.choice_4}}</label>
+      </div>
+    </div>
+    {% endfor %}
+    
+    {% for q  in question_mcq%}
+    <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
+      <label class="queslabel" for="question">{{q.question_text}}</label>
+      <div>
+      <input id="unchecked" class="ansinput" type="hidden" name={{q.choice_1}} value="false" />
+      <input id="{{q.choice_1}}" class="ansinput" type='checkbox'name={{q.choice_1}} value='true'>
+      <label class= "qchoice" for="{{q.choice_1}}">{{q.choice_1}}</label>
+      </div>
+      <div>
+      <input id="{{q.choice_2}}" class="ansinput" type='checkbox'name={{q.choice_2}} value='true'>
+      <label class= "qchoice" for="{{q.choice_2}}">{{q.choice_2}}</label>
+      </div>
+       <input id="{{q.choice_3}}" class="ansinput" type='checkbox' name={{q.choice_3}} value='true'>
+       <label class= "qchoice" for="{{q.choice_3}}">{{q.choice_3}}</label>
+      <div>
+      <input id="{{q.choice_4}}" class="ansinput" type='checkbox'name={{q.choice_4}} value='true'>
+      <label class= "qchoice" for="{{q.choice_4}}">{{q.choice_4}}</label>
+      </div>
+    </div>
+    {% endfor %}
+    {% for q  in question_boolean%}
+    <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
+      <label class="queslabel" for="question">{{q.question_text}}</label>
+      <div>
+      <input id="{{q.choice_1}}" class="ansinput" type='radio'name={{q.question_text}} value='true'>
+      <label class= "qchoice" >true</label>
+      </div>
+      <div>
+      <input id="{{q.choice_2}}" class="ansinput" type='radio'name={{q.question_text}} value='false'>
+      <label class= "qchoice" >False</label>
+      </div>
+    </div>
+    {% endfor %}
+    {% for q  in question_int%}
+    <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
+      <label class="queslabel" for="question">{{q.question_text}}</label>
+      <div>
+      <input type='number' name={{q.question_text}}>
+      
+      </div>
+    </div>
+    {% endfor %}
+    <div class="w3-container w3-center">
+    <button class="submitbtn" type="submit" value='submit'>submit</button>
+  </div>
+  </form>
+  {%endblock%}
+  

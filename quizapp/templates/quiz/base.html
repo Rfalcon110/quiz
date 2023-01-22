@@ -1,0 +1,284 @@
+<html>
+<head>
+  <title>The Quiz App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script>
+    form.addEventListener('submit', () => {
+      if(base.getElementById({{q.choice_1}}).checked) {
+          base.getElementById('unchecked').disabled = true;
+      }
+  }
+  </script>
+<style>
+  * {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+    body{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #282a36;
+    }
+    
+    .content {
+        background-color: #44475a;
+        padding: 30px;
+        margin-top: 120px;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-bottom: 100px;
+        height: fit-content;
+    }
+  
+    .heading {
+      background-color: #bd93f9;
+      color: #f8f8f2;
+      float: left;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      
+    }
+
+    .heading a {
+      display: inline-block;
+        color: #f8f8f2;
+        text-align: center;
+        text-decoration: none;
+    }
+    .navlist {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #282a36;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      
+      .linkblock {
+        float: right;
+      }
+      
+      .linkblock a {
+        display: inline-block;
+        color: #f8f8f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      .linkblock a:hover:not(.active) {
+        background-color: #bd93f9;
+      }
+      
+      .active {
+        background-color: #ff5555;
+      }
+
+      .quizlist {
+        list-style-type: none;
+        padding: 10px;
+        background-color: #44475a;
+      
+      }
+      .quizblock {
+        padding: 5px;
+        margin-left: 35px;
+      }
+      .quizblock a {
+        display: block;
+        color: #f8f8f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        width: 100%;
+      }
+
+      .quizblock a:hover:not(.qactive) {
+        background-color: #bd93f9;
+      }
+      
+      .qactive {
+        background-color: #ff5555;
+      }
+
+      .quizhead {
+        text-align: center;
+        color: #8be9fd;
+        padding: 10px;
+      }
+
+      .submitbtn {
+        background-color: #44475a;
+        border: none;
+        color: #f8f8f8;
+        padding: 8px 24px;
+        margin: 10px 4px;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        width: 40%;
+        text-align: center;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      .submitbtn:hover {
+        background-color:#50fa7b;
+        color: #f8f8f2;
+      }
+
+      .queslabel {
+        text-align: left;
+        color: #bd93f9;
+        font-size: x-large;
+      }
+
+      .ansinput {
+        appearance: none;
+        position: relative;
+        height: 16px;
+        width: 16px;
+        background-color: #f8f8f2;
+        border-radius: 50%;
+        transition: 0.2s all linear;
+        cursor: pointer;
+       
+      }
+
+      .ansinput:checked {
+         border: 4px solid #50fa7b;
+      }
+
+      .qchoice {
+        font-size: larger;
+        color: #f8f8f2;
+      }
+
+      .quizresults {
+        color:#f8f8f2;
+        text-align: center;
+      }
+
+
+      .qform label{
+        color:#f8f8f2;
+        text-align: center;
+      }
+      .qform input[type=text]{
+        width: 100%;
+        color: #000000;
+      }
+
+      .qform :required{
+        color: #f8f8f2;
+      }
+
+      .qform select {
+      width: 100%;
+      padding: 5px 5px;
+      border: none;
+      border-radius: 4px;
+      background-color: #f8f8f2;
+}
+
+
+
+
+      .qformsubmit{
+        background-color: #44475a;
+        border: none;
+        color: #f8f8f8;
+        padding: 8px 24px;
+        margin: 10px 4px;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        width: 30%;
+        text-align: center;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+
+      .qformsubmit:hover {
+        background-color:#50fa7b;
+        color: #f8f8f2;
+      }
+
+      .lform label{
+        color:#f8f8f2;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .lform input{
+        width:100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #000000;
+      }
+
+      .lform input[type=text]:focus{
+         
+      border: 3px solid #282a36;
+      }
+
+      .lclass{
+        padding: 40px;
+        margin-top: 50px;
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-bottom: 10px;
+      }
+
+      .helptext{
+        color: #bd93f9;
+        display: block;
+      }
+
+      .errortext{
+        color: #ff5555;
+        display: block;
+        text-align: center;
+        font-size: x-large;
+      }
+
+
+
+
+    
+</style>
+</head>
+<body>
+  <ul class="navlist">
+    <li class="heading"><a href={% url 'index' %}>The Quiz App</a></li>
+    <li class="linkblock"><a href={% url 'logout' %}>Logout</a>
+    </li>
+    {% comment %} <li class="linkblock"><a href={% url 'register' %}>Register as QuizTaker</a>
+    </li>{% endcomment %}
+    
+      <li class="linkblock"><a href={% url 'addquestion' %}>Add Question</a>
+      </li>
+      <li class="linkblock"><a href={% url 'editindex' %}>Edit Quiz</a>
+      </li>
+    
+      <li class="linkblock"><a href={% url 'addquiz' %}>Add Quiz</a>
+      </li>
+      
+    <li class="linkblock"><a href={% url 'index' %}>Home</a>
+    </li>
+    <li class="linkblock"><a href={% url 'leaderboardsindex' %}>Leaderboards</a>
+    </li> 
+    
+</ul>
+<div class="content">
+    {% block content %}{% endblock %}
+</div>  
+</body>
+</html>

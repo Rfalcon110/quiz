@@ -1,0 +1,32 @@
+{% extends 'quiz/base.html'%}
+{%block content%}
+<div>
+<form method='post'>
+<div class="lclass">
+  <h1 class="quizhead">Login</h1>
+  <div class="lform">
+ {% csrf_token %}
+   {{form}}
+  </div>
+</div>
+<div class="w3-container w3-center">
+<button class="qformsubmit" type="submit" value='submit'>Login</button>
+</div>  
+</form>
+<div>
+<h3 class='quizhead'>Don't have an account?</h3>
+<div class="w3-container w3-center">
+<a class="qformsubmit" href={% url 'register'%}>Register</a>
+<a class="qformsubmit" href={% url 'registerqm'%}>Register as Quiz Master</a> </div>
+</div>
+</div>
+{% load socialaccount %}
+
+    <button class="btn btn-outline-info">
+        <a href="{% provider_login_url 'google'%}?next=/">
+            <i class="fab fa-google"></i>
+            Login with Google
+        </a>
+    </button>
+    
+{%endblock%}

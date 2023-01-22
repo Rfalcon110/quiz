@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'quiz/base.html'%}
+{%block content%}
+{% if quiz_list %}
+    <h1 class="quizhead">Available Quizzes</h1>
+    <ul class="quizlist">
+    {% for quiz in quiz_list %}
+        <li class="quizblock"><a href="/quiz/{{ quiz.quiz_name }}/">{{ quiz.quiz_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p class="errortext">No quizzes are available.</p>
+{% endif %}
+{%endblock%}
