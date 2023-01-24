@@ -13,20 +13,27 @@
 <button class="qformsubmit" type="submit" value='submit'>Login</button>
 </div>  
 </form>
-<div>
-<h3 class='quizhead'>Don't have an account?</h3>
-<div class="w3-container w3-center">
-<a class="qformsubmit" href={% url 'register'%}>Register</a>
-<a class="qformsubmit" href={% url 'registerqm'%}>Register as Quiz Master</a> </div>
-</div>
-</div>
 {% load socialaccount %}
+<div class="w3-container w3-center">
 
-    <button class="btn btn-outline-info">
-        <a href="{% provider_login_url 'google'%}?next=/">
+    <button class="qformsubmit">
+        <a style="text-decoration: none;"href="{% provider_login_url 'google'%}?next=/">
             <i class="fab fa-google"></i>
             Login with Google
         </a>
     </button>
+  </div>
     
+
+
+
+<div>
+<h3 class='quizhead'>Don't have an account?</h3>
+<div class="w3-container w3-center">
+<a class="qformsubmit" href={% url 'register'%}>Register</a>
+<a class="qformsubmit" href={% url 'registerqm'%}>Register as Quiz Master</a> 
+
+</div>
+</div>
+
 {%endblock%}

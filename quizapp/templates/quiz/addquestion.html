@@ -4,9 +4,10 @@
     <div>
     <h1 class="quizhead">Add Question</h1>
     <div class="qform">
-    <form action="" method="POST">
+    <form method="POST"action={% url 'addquestion' %}>
     {% csrf_token %}
     {{form.as_p}}
+    <input type="hidden"  name="question_type" value={{question_type}}>
     <br>
     <div class="w3-container w3-center">
     <input class="qformsubmit" type="submit" name="Submit">

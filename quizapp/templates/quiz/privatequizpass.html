@@ -1,0 +1,15 @@
+{% extends 'quiz/base.html'%}
+{%block content%} 
+<div> 
+   <form  method="POST">
+    {% csrf_token %}
+    <div class="lclass">
+        <h1 class="quizhead">Enter Password</h1>
+        <div class="w3-container w3-center">
+        <input class="passfield" type="password" id="password" name="password"><br>
+        <button class="qformsubmit" type="submit" value='submit'>Submit</button>
+        </div>
+    </div>
+    </form>
+</div>
+ {%endblock%}

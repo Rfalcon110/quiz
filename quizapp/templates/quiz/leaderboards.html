@@ -1,9 +1,20 @@
 {% extends 'quiz/base.html'%}
 {%block content%}
-    <h1 class="quizhead"></h1>
-    <ul class="quizlist">
+    <h1 class="quizhead">Leaderboards</h1>
+    <table class="leadertable">
+        <tr>
+        <th>User</th>
+        <th>Score</th>
+        </tr>
+    
     {% for result in result_list %}
-        <li class="quizblock">{{result.user}}</a></li>
+    
+        <tr>
+        <td>{{result.user}}</th>
+        <td>{{result.marks_scored}}</th>
+        </tr>
+    
     {% endfor %}
-    </ul>
+</table>
+    
 {%endblock%}

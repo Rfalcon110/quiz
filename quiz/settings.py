@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
+    
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
@@ -160,8 +161,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='index'
-LOGIN_URL='login'
-SITE_ID = 2
+LOGIN_URL='/'
+SITE_ID = 3
+
 SOCIALACCOUNT_LOGIN_ON_GET=True
-#client ID 785518431484-ulrve94f8kq5m242mraei5lkbgp1lj3e.apps.googleusercontent.com
-#client secret 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
