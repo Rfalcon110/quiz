@@ -4,6 +4,7 @@
 <h1 class="quizhead">{{quizz}}</h1>
 <form method='post'>
     {% csrf_token %}
+    <h2>SCQ</h2>
     {% for q  in question_scq%}
     <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
       <label class="queslabel" for="question">{{q.question_text}}</label>
@@ -23,7 +24,7 @@
       </div>
     </div>
     {% endfor %}
-    
+    <h2>MCQ</h2>
     {% for q  in question_mcq%}
     <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
       <label class="queslabel" for="question">{{q.question_text}}</label>
@@ -49,6 +50,7 @@
       </div>
     </div>
     {% endfor %}
+    <h2>BOOLEAN</h2>
     {% for q  in question_boolean%}
     <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
       <label class="queslabel" for="question">{{q.question_text}}</label>
@@ -62,6 +64,7 @@
       </div>
     </div>
     {% endfor %}
+    <h2>INTEGER</h2>
     {% for q  in question_int%}
     <div class="w3-container w3-card-4" name ='quiz' id='quizz'>
       <label class="queslabel" for="question">{{q.question_text}}</label>

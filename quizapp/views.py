@@ -13,6 +13,7 @@ def index(request):
             'quiz_list': quiz_list
         }
         return render(request,'quiz/index.html',context)
+
 def edit_index(request):
     if request.user.has_perm('quizapp.change_quiz'):
         quiz_list=Quiz.objects.all()
@@ -22,6 +23,7 @@ def edit_index(request):
         return render(request,'quiz/index_edit.html',context)
     else:
         return redirect('index')
+
 @login_required
 def leaderboards_index(request):
     quiz_list=Quiz.objects.all()
@@ -29,6 +31,7 @@ def leaderboards_index(request):
             'quiz_list': quiz_list
         }
     return render(request,'quiz/leaderboards_index.html',context)
+
 def export_index(request):
     if request.user.has_perm('quizapp.add_scq'):
         quiz_list=Quiz.objects.all()
@@ -36,6 +39,7 @@ def export_index(request):
             'quiz_list': quiz_list
         }
         return render(request,'quiz/exportindex.html',context)
+
 @login_required
 def private_quiz_index(request):
     quiz_list=Quiz.objects.filter(private=True)
@@ -44,6 +48,18 @@ def private_quiz_index(request):
         }
     return render(request,'quiz/private_index.html',context)
 
+@login_required
+def private_quiz(request,quiz_name1):
+    if request.method=='POST':
+        password=request.POST.get('password')
+        quiz1=Quiz.objects.get(quiz_name=quiz_name1)
+        # privatequiz=Quiz.objects.filter(quiz=quiz1)
+        if password==quiz1.password:
+            return redirect(f'/quiz/{quiz1.quiz_name}/')
+        else:
+            return redirect('private_quiz_index')    
+    else:
+        return render(request,'quiz/privatequizpass.html')   
 
 @login_required
 def quiz(request,quiz_name1):
@@ -176,7 +192,6 @@ def addquiz(request):
     else:
         return redirect('index')
 
-
 def editquestion(request,quiz_name1,question_type,id):
     if request.user.has_perm('quizapp.change_scq'):
         if request.method=='POST':
@@ -227,15 +242,6 @@ def editquestion(request,quiz_name1,question_type,id):
             else:
                 return redirect('index')
 
-
-
-    
-
-
-
-
-
-
 def edit_quiz(request,quiz_name1):
     if request.user.has_perm('quizapp.change_question'):
         quiz1=Quiz.objects.get(quiz_name=quiz_name1)
@@ -263,24 +269,6 @@ def leaderboards(request,quiz_name1):
         "result_list":result_list
     }
     return render(request,'quiz/leaderboards.html',context)
-
-
-
-
-
-
-@login_required
-def private_quiz(request,quiz_name1):
-    if request.method=='POST':
-        password=request.POST.get('password')
-        quiz1=Quiz.objects.get(quiz_name=quiz_name1)
-        # privatequiz=Quiz.objects.filter(quiz=quiz1)
-        if password==quiz1.password:
-            return redirect(f'/quiz/{quiz1.quiz_name}/')
-        else:
-            return redirect('private_quiz_index')    
-    else:
-        return render(request,'quiz/privatequizpass.html')   
 
 def question_type(request):
     if request.user.has_perm('quizapp.change_question'):

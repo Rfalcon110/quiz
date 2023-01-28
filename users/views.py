@@ -18,14 +18,12 @@ def register(request):
         form=UserCreationForm()
         return render(request,'users/register.html',{'form':form})   
 
-
 def home(request):
     if request.user.is_authenticated:
         return redirect('index')
     else:
         return redirect('login')
  
-
 def logoutPage(request):
     logout(request)
     return redirect('/')

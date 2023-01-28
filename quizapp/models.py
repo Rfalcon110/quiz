@@ -53,7 +53,7 @@ class booleanques(models.Model):
         ('true','True'),
         ('false','False')
     ]
-    answer=models.CharField(max_length=200,choices=choice,null=True,blank=True)
+    answer=models.CharField(max_length=200,choices=choice,default=True)
     question_type='boolean'
     marking_scheme=[
         ('nonegmarking','+4/0'),
@@ -101,14 +101,3 @@ class Mcq(models.Model):
         return self.question_text
     def question_type(self):
         return self.question_type
-
-
-    
- 
-      
-
-
-
-
-
-        
