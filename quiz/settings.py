@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,11 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-wz-!q_=bi$c6m9cg+$^zcziap(4*=i!z9ll00d^ad$wd$(x!8#'
 
+
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# DEBUG = int(os.environ.get("DEBUG", default=0))
 ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -80,32 +83,42 @@ WSGI_APPLICATION = 'quiz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 # DATABASES = {
+
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+#         'NAME': 'raunak_database',
+
+#         'USER': 'raunak',
+
+#         'PASSWORD': "raunak",
+
+#         'HOST': 'localhost',
+
+#         'PORT': '5432',
+
+#     }
+
+# }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+#         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+#         "USER": os.environ.get("SQL_USER", "user"),
+#         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+#         "HOST": os.environ.get("SQL_HOST", "localhost"),
+#         "PORT": os.environ.get("SQL_PORT", "5432"),
 #     }
 # }
-
-DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'raunak_database',
-
-        'USER': 'raunak',
-
-        'PASSWORD': "raunak",
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
-
-    }
-
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -154,6 +167,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT =BASE_DIR/"staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -162,5 +176,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='index'
 LOGIN_URL='/'
 SITE_ID = 3
+# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 SOCIALACCOUNT_LOGIN_ON_GET=True

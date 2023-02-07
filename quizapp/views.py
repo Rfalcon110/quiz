@@ -112,7 +112,7 @@ def quiz(request,quiz_name1):
                 request.POST.get(q.choice_3),
                 request.POST.get(q.choice_4),
             ]
-            ans=[
+            awns=[
                 q.choice_1_ans,
                 q.choice_2_ans,
                 q.choice_3_ans,
